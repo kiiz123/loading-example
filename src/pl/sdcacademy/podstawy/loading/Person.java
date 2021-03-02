@@ -10,6 +10,10 @@ public class Person {
     private Double weight;
     private Double height;
 
+    public static void main(String[] args) {
+        Person person = new Person("2010-01-09",90.0,177.0);
+    }
+
     public Person(String firstName, String lastName, LocalDate birthDate, double weight, double height) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -19,18 +23,15 @@ public class Person {
     }
 
     public Person(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDate = LocalDate.of(2000, Month.JANUARY,1);
-        this.weight = 0.0;
-        this.height = 0.0;
+        this(firstName,lastName,LocalDate.of(2000, Month.JANUARY,1),0.0,0.0);
     }
 
     public Person(LocalDate birthDate, double weight, double height) {
-        this.firstName = "";
-        this.lastName = "";
-        this.birthDate = birthDate;
-        this.weight = weight;
-        this.height = height;
+        this("","",birthDate,weight,height);
     }
+
+    public Person(String birthDate, double weight, double height) {
+        this(LocalDate.parse(birthDate),weight,height);
+    }
+
 }
